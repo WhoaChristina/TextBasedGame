@@ -10,6 +10,7 @@ namespace Inlamning3.Classes
         List<Room> rooms = new List<Room>();
         List<Items> inventory = new List<Items>();
         int currentRoom = 0;
+        Errors error = new Errors();
         public int ChosenAction { get; set; }
         public Actions()
         {
@@ -27,7 +28,7 @@ namespace Inlamning3.Classes
             }
             else
             {
-                NotValidMove();
+                error.NotValidMove();
             }
         }
         public void MoveSouth()
@@ -39,7 +40,7 @@ namespace Inlamning3.Classes
             }
             else
             {
-                NotValidMove();
+                error.NotValidMove();
             }
         }
         public void MoveEast()
@@ -51,7 +52,7 @@ namespace Inlamning3.Classes
             }
             else
             {
-                NotValidMove();
+                error.NotValidMove();
             }
         }
         public void MoveWest()
@@ -63,25 +64,23 @@ namespace Inlamning3.Classes
             }
             else
             {
-                NotValidMove();
+                error.NotValidMove();
             }
         }
         public void Look()
         {
 
-            //kollar runt i "rummet"
+            //printa pathfinding key (NSES) + itemsinroom
         }
         public void ChooseFromInventory()
         {
-            foreach (var item in inventory)
-            {
-                Console.WriteLine(item);
-            }
-            //visar inventory och kan välja items, GLÖM INTE EXIT ifall man inte vill "ta" något
+            Console.WriteLine("Which item would you like to have?");
+            InventoryLoop();
+            //Switch case för item? + en exit knapp
         }
         public void CombineItems ()
         {
-            //kombinera items
+            //kolla om items går att kombinera
         }
         public void PickUpItemsInRoom()
         {
@@ -96,17 +95,14 @@ namespace Inlamning3.Classes
         public void DropItem()
         {
             Console.WriteLine("Which item would you like to drop?(input number)");
-            foreach (var item in inventory)
-            {
-                Console.WriteLine(item);
-            }
+            InventoryLoop();
             int input = int.Parse(Console.ReadLine());
             rooms[currentRoom].ItemsInRoom.Add(inventory[input]);
             inventory.RemoveAt(input);
 
             
         }
-        public void UseChosenItem()
+        public void UseItem()
         {
             //använd på guards
         }
@@ -114,10 +110,15 @@ namespace Inlamning3.Classes
         {
             //mer detaljerad "look"
         }
-        public void NotValidMove()
+        
+        public void InventoryLoop()
         {
-            Console.WriteLine("*you tried to walk into the woods without a path, unfortunately the forrest is protected with magic which won't allow you to do this*");
+            foreach (var item in inventory)
+            {
+                Console.WriteLine(item);
+            }
         }
+        
 
     }
 }

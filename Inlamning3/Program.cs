@@ -45,7 +45,7 @@ namespace Inlamning3.Classes
                         action.DropItem();
                         break;
                     case 10:
-                        action.UseChosenItem();
+                        action.UseItem();
                         break;
                     case 11:
                         action.Inspect();
