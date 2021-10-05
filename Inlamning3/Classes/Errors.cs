@@ -19,17 +19,5 @@ namespace Inlamning3.Classes
         {
             Console.WriteLine("*You tried to give the guard something they don't want*");
         }
-        public void NotValidInput ()
-        {
-            try
-            {
-                Console.ReadLine();
-            }
-            catch (Exception)
-            {
-
-                Console.WriteLine("*oops! your input was invalid*");
-            }
-        }
     }
 }

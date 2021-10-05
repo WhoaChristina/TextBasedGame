@@ -13,8 +13,17 @@ namespace Inlamning3.Classes
 
             while (exit != true)
             {
+                int input = -1;
                 Console.WriteLine("What would you like to do? Input a number: ");
-                int input = int.Parse(Console.ReadLine());
+                try
+                {
+                    input = int.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("*Oops, your input is invalid*");
+                }
+
                 switch (input)
                 {
                     case 1:

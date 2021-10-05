@@ -69,8 +69,13 @@ namespace Inlamning3.Classes
         }
         public void Look()
         {
-
-            //printa pathfinding key (NSES) + itemsinroom
+            List<Items> temp = rooms[currentRoom].ItemsInRoom;
+            Console.WriteLine("These are the paths in this section: " + rooms[currentRoom].PathFinding.Keys);
+            Console.WriteLine("These are the items in this section: ");
+            foreach (var item in temp)
+            {
+                Console.WriteLine(item);
+            }
         }
         public void ChooseFromInventory()
         {
