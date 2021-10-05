@@ -28,7 +28,7 @@ namespace Inlamning3.Classes
             catch (Exception)
             {
 
-                Console.WriteLine("*oops! your input was invalid");
+                Console.WriteLine("*oops! your input was invalid*");
             }
         }
     }
