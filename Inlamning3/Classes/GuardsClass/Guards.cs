@@ -14,6 +14,6 @@ namespace Inlamning3.Classes
             get { return guardItems; }
             set { guardItems = value; }
         }
-
+        public abstract bool ValidGift(Items input);
     }
 }

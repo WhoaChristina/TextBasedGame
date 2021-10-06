@@ -8,9 +8,9 @@ namespace Inlamning3.Classes
     {
 
         List<Room> rooms = new List<Room>();
-        List<Items> inventory = new List<Items>();
         int currentRoom = 0;
         Errors error = new Errors();
+        Player player = new Player();
         public int ChosenAction { get; set; }
         public Actions()
         {
@@ -77,22 +77,47 @@ namespace Inlamning3.Classes
                 Console.WriteLine(item);
             }
         }
-        public void ChooseFromInventory()
+        public void LoopInventory()
         {
-            Console.WriteLine("Which item would you like to have?");
             InventoryLoop();
-            //Switch case för item? + en exit knapp
         }
-        public void CombineItems ()
+        public void CombineItems()
         {
-            //kolla om items går att kombinera
+            
+            int item1;
+            int item2;
+            Console.WriteLine("Which items would you like to combine? enter one number at a time");
+            LoopInventory();
+            try
+            {
+                item1 = int.Parse(Console.ReadLine());
+                item2 = int.Parse(Console.ReadLine());
+                if (player.inventory[item1].CanCombine && player.inventory[item2].CanCombine && player.inventory[item1].Combindable(player.inventory[item2]))
+                {
+                    Items newItem = player.inventory[item1].GenerateCombinedItem();
+                    player.inventory.Add(newItem);
+                    int big = Math.Max(item1, item2);
+                    int small = Math.Min(item1, item2);
+                    player.inventory.RemoveAt(big);
+                    player.inventory.RemoveAt(small);
+                }
+                else
+                {
+                    error.NotValidCombination();
+                }
+            }
+            catch (Exception)
+            {
+
+                error.NotValidInput();
+            }
         }
         public void PickUpItemsInRoom()
         {
             List<Items> temp = rooms[currentRoom].ItemsToPickUp();
             foreach (var item in temp)
             {
-                inventory.Add(item);
+                player.inventory.Add(item);
             }
             rooms[currentRoom].ItemsInRoom.Clear();
             
@@ -102,23 +127,51 @@ namespace Inlamning3.Classes
             Console.WriteLine("Which item would you like to drop?(input number)");
             InventoryLoop();
             int input = int.Parse(Console.ReadLine());
-            rooms[currentRoom].ItemsInRoom.Add(inventory[input]);
-            inventory.RemoveAt(input);
+            rooms[currentRoom].ItemsInRoom.Add(player.inventory[input]);
+            player.inventory.RemoveAt(input);
 
             
         }
         public void UseItem()
         {
-            //använd på guards
+            if (rooms[currentRoom].GuardInRoom.Count > 0)
+            {
+                Console.WriteLine("Which item would you like to use on the guard?");
+                try
+                {
+                    int input = int.Parse(Console.ReadLine());
+                    foreach (var guard in rooms[currentRoom].GuardInRoom)
+                    {
+                        if (guard.ValidGift(player.inventory[input]))
+                        {
+                            Console.WriteLine("*The guard was happy with your gift and walked away*");
+                            rooms[currentRoom].GuardInRoom.Remove(guard);
+                            player.inventory.RemoveAt(input);
+                        }
+                        else
+                        {
+                            error.NotValidGift();
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    error.NotValidInput();
+                }
+            }
+            else
+            {
+                Console.WriteLine("*There is no one to give anything to*");
+            }
         }
         public void Inspect()
         {
-            //mer detaljerad "look"
+            rooms[currentRoom].Inspection();
         }
         
         public void InventoryLoop()
         {
-            foreach (var item in inventory)
+            foreach (var item in player.inventory)
             {
                 Console.WriteLine(item);
             }

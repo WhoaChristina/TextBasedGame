@@ -9,6 +9,8 @@ namespace Inlamning3.Classes
         public int Paths { get; set; }
         private Dictionary<Direction, int> pathFinding = new Dictionary<Direction, int>();
         private List<Items> itemsInRoom = new List<Items>();
+        private List<Guards> guardsInRoom = new List<Guards>();
+
         public List<Items> ItemsInRoom
         {
             get { return itemsInRoom; }
@@ -18,6 +20,11 @@ namespace Inlamning3.Classes
         {
             get { return pathFinding; }
             set { pathFinding = value; }
+        }
+        public List<Guards> GuardInRoom
+        {
+            get { return GuardInRoom; }
+            set { GuardInRoom = value; }
         }
         public void PrintPaths()
         {

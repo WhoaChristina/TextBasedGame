@@ -42,7 +42,7 @@ namespace Inlamning3.Classes
                         action.Look();
                         break;
                     case 6:
-                        action.ChooseFromInventory();
+                        action.LoopInventory();
                         break;
                     case 7:
                         action.CombineItems();

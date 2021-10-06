@@ -11,7 +11,7 @@ namespace Inlamning3.Classes
             Paths = 2;
             PathFinding.Add(Direction.West, 0);
             PathFinding.Add(Direction.North, 3);
-            PigGuard oink = new PigGuard();
+            GuardInRoom.Add(new PigGuard());
         }
     }
 }

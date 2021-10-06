@@ -10,5 +10,13 @@ namespace Inlamning3.Classes
         {
             CanCombine = true;
         }
+        public override bool Combindable(Items input)
+        {
+            return input is HatPiece1;
+        }
+        public override Items GenerateCombinedItem()
+        {
+            return new Hat();
+        }
     }
 }

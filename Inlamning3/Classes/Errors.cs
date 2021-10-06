@@ -13,11 +13,15 @@ namespace Inlamning3.Classes
 
         public void NotValidCombination()
         {
-            Console.WriteLine("*After some time you and some cursewords you realize these items cannot be combined*");
+            Console.WriteLine("*After some time and some cursewords you realize these items cannot be combined*");
         }
         public void NotValidGift()
         {
             Console.WriteLine("*You tried to give the guard something they don't want*");
+        }
+        public void NotValidInput()
+        {
+            Console.WriteLine("*Oops, your input was invalid*");
         }
     }
 }

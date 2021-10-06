@@ -12,5 +12,16 @@ namespace Inlamning3.Classes
             Guarding = true;
             GuardItems.Add(new HatPiece2());
         }
+        public override bool ValidGift(Items input)
+        {
+            if (input is Apple)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

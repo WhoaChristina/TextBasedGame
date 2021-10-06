@@ -8,5 +8,14 @@ namespace Inlamning3.Classes
     {
         public bool CanCombine { get; set; }
 
+        public virtual bool Combindable(Items input)
+        {
+            return false;
+        }
+        public virtual Items GenerateCombinedItem()
+        {
+            return null;
+        }
+
     }
 }
