@@ -8,6 +8,7 @@ namespace Inlamning3.Classes
     {
         public Bacon()
         {
+            Name = "Bacon";
             CanCombine = false;
         }
     }

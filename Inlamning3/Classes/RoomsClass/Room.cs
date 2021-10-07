@@ -23,8 +23,8 @@ namespace Inlamning3.Classes
         }
         public List<Guards> GuardInRoom
         {
-            get { return GuardInRoom; }
-            set { GuardInRoom = value; }
+            get { return guardsInRoom; }
+            set { guardsInRoom = value; }
         }
         public void PrintPaths()
         {
@@ -53,6 +53,9 @@ namespace Inlamning3.Classes
             East = 3,
             West = 4
         }
+        public virtual void EndRoomStory(List<Items> inventory)
+        {
 
+        }
     }
 }

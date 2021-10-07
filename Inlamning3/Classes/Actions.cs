@@ -6,7 +6,7 @@ namespace Inlamning3.Classes
 {
     public class Actions
     {
-
+        public static bool gameDone = false;
         List<Room> rooms = new List<Room>();
         int currentRoom = 0;
         Errors error = new Errors();
@@ -25,6 +25,8 @@ namespace Inlamning3.Classes
             {
                 int room = rooms[currentRoom].PathFinding[Room.Direction.North];
                 currentRoom = room;
+                Console.WriteLine(PlayerMoved());
+                rooms[currentRoom].EndRoomStory(player.inventory);
             }
             else
             {
@@ -37,6 +39,8 @@ namespace Inlamning3.Classes
             {
                 int room = rooms[currentRoom].PathFinding[Room.Direction.South];
                 currentRoom = room;
+                Console.WriteLine(PlayerMoved());
+                rooms[currentRoom].EndRoomStory(player.inventory);
             }
             else
             {
@@ -49,6 +53,8 @@ namespace Inlamning3.Classes
             {
                 int room = rooms[currentRoom].PathFinding[Room.Direction.East];
                 currentRoom = room;
+                Console.WriteLine(PlayerMoved());
+                rooms[currentRoom].EndRoomStory(player.inventory);
             }
             else
             {
@@ -61,6 +67,8 @@ namespace Inlamning3.Classes
             {
                 int room = rooms[currentRoom].PathFinding[Room.Direction.West];
                 currentRoom = room;
+                Console.WriteLine(PlayerMoved());
+                rooms[currentRoom].EndRoomStory(player.inventory);
             }
             else
             {
@@ -70,11 +78,23 @@ namespace Inlamning3.Classes
         public void Look()
         {
             List<Items> temp = rooms[currentRoom].ItemsInRoom;
-            Console.WriteLine("These are the paths in this section: " + rooms[currentRoom].PathFinding.Keys);
+            Console.WriteLine("These are the paths in this section: " );
+            foreach (var path in rooms[currentRoom].PathFinding.Keys)
+            {
+                Console.WriteLine(path.ToString());
+            }
             Console.WriteLine("These are the items in this section: ");
             foreach (var item in temp)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(item.Name);
+            }
+            if (rooms[currentRoom].GuardInRoom.Count > 0)
+            {
+                Console.WriteLine("These are the guards in the room: ");
+                foreach (var guard in rooms[currentRoom].GuardInRoom)
+                {
+                    Console.WriteLine(guard.Name);
+                }
             }
         }
         public void LoopInventory()
@@ -86,7 +106,7 @@ namespace Inlamning3.Classes
             
             int item1;
             int item2;
-            Console.WriteLine("Which items would you like to combine? enter one number at a time");
+            Console.WriteLine("Which items would you like to combine? Enter the number of the item, one at a time");
             LoopInventory();
             try
             {
@@ -100,6 +120,7 @@ namespace Inlamning3.Classes
                     int small = Math.Min(item1, item2);
                     player.inventory.RemoveAt(big);
                     player.inventory.RemoveAt(small);
+                    Console.WriteLine("You combined the items and got a: " + newItem.Name);
                 }
                 else
                 {
@@ -124,19 +145,27 @@ namespace Inlamning3.Classes
         }
         public void DropItem()
         {
-            Console.WriteLine("Which item would you like to drop?(input number)");
-            InventoryLoop();
-            int input = int.Parse(Console.ReadLine());
-            rooms[currentRoom].ItemsInRoom.Add(player.inventory[input]);
-            player.inventory.RemoveAt(input);
+            try
+            {
+                Console.WriteLine("Which item would you like to drop? enter number");
+                InventoryLoop();
+                int input = int.Parse(Console.ReadLine());
+                rooms[currentRoom].ItemsInRoom.Add(player.inventory[input]);
+                player.inventory.RemoveAt(input);
+            }
+            catch (Exception)
+            {
 
-            
+                error.NotValidInput();
+            }
+
         }
         public void UseItem()
         {
             if (rooms[currentRoom].GuardInRoom.Count > 0)
             {
-                Console.WriteLine("Which item would you like to use on the guard?");
+                Console.WriteLine("Which item would you like to use on the guard? Enter number");
+                InventoryLoop();
                 try
                 {
                     int input = int.Parse(Console.ReadLine());
@@ -147,6 +176,7 @@ namespace Inlamning3.Classes
                             Console.WriteLine("*The guard was happy with your gift and walked away*");
                             rooms[currentRoom].GuardInRoom.Remove(guard);
                             player.inventory.RemoveAt(input);
+                            break;
                         }
                         else
                         {
@@ -171,10 +201,17 @@ namespace Inlamning3.Classes
         
         public void InventoryLoop()
         {
-            foreach (var item in player.inventory)
+
+            for (int i = 0; i < player.inventory.Count; i++)
             {
-                Console.WriteLine(item);
+                Items item = player.inventory[i];
+                Console.WriteLine(i + " " + item.Name);
             }
+        }
+        public string PlayerMoved()
+        {
+            string moved = "You took the chosen path";
+            return moved;
         }
         
 

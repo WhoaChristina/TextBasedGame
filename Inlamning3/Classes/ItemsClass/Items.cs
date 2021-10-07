@@ -6,6 +6,7 @@ namespace Inlamning3.Classes
 {
     public abstract class Items
     {
+        public string Name { get; set; }
         public bool CanCombine { get; set; }
 
         public virtual bool Combindable(Items input)

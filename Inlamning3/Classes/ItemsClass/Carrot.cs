@@ -8,6 +8,7 @@ namespace Inlamning3.Classes
     {
         public Carrot()
         {
+            Name = "Carrot";
             CanCombine = false;
         }
     }

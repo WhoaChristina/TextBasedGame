@@ -11,6 +11,7 @@ namespace Inlamning3.Classes
             Paths = 2;
             PathFinding.Add(Direction.West, 0);
             PathFinding.Add(Direction.North, 3);
+            ItemsInRoom.Add(new HatPiece2());
             GuardInRoom.Add(new PigGuard());
         }
     }

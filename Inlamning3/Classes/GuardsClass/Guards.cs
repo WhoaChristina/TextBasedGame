@@ -8,12 +8,6 @@ namespace Inlamning3.Classes
     {
         public string Name { get; set; }
         public bool Guarding { get; set; }
-        private List<Items> guardItems = new List<Items>();
-        public List<Items> GuardItems
-        {
-            get { return guardItems; }
-            set { guardItems = value; }
-        }
         public abstract bool ValidGift(Items input);
     }
 }

@@ -10,7 +10,6 @@ namespace Inlamning3.Classes
         {
             Name = "oink";
             Guarding = true;
-            GuardItems.Add(new HatPiece2());
         }
         public override bool ValidGift(Items input)
         {

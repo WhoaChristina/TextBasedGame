@@ -8,6 +8,7 @@ namespace Inlamning3.Classes
     {
         public HatPiece2()
         {
+            Name = "Bucket with no handle";
             CanCombine = true;
         }
         public override bool Combindable(Items input)

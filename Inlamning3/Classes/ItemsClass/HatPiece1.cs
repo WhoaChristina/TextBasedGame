@@ -8,6 +8,7 @@ namespace Inlamning3.Classes
     {
         public HatPiece1()
         {
+            Name = "Frisbee with no middle";
             CanCombine = true;
         }
         public override bool Combindable(Items input)

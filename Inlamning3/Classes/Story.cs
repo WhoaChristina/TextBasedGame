@@ -10,12 +10,6 @@ namespace Inlamning3.Classes
         
     {
         string startFile = @"c:\\temp\\StartStory.txt";
-        /*string endFileOnePiece = @"c:\\temp\\EndStory1Piece.txt";
-        string endFileAssembled = @"c:\\temp\\EndStoryAssembled.txt";
-        string endFileNotAssembled = @"c:\\temp\\EndStoryNotAssembled.txt";
-        string PigGuardFileBacon = @"c:\\temp\\PigGuardBacon.txt";
-        string PigGuardfileNoBacon = @"c:\\temp\\PigGuardNoBcon.txt";
-        string PigGuardFileDissapear = @"c:\\temp\\PigGuardAfterGift.txt";*/
 
         public List<string> StoryLine ()
         {

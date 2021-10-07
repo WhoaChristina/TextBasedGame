@@ -8,6 +8,7 @@ namespace Inlamning3.Classes
     {
         public Apple()
         {
+            Name = "Apple";
             CanCombine = false;
         }
     }

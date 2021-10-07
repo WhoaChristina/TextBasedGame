@@ -8,6 +8,7 @@ namespace Inlamning3.Classes
     {
         public Hat()
         {
+            Name = "Hat";
             CanCombine = false;
         }
     }

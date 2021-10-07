@@ -15,7 +15,6 @@ namespace Inlamning3.Classes
         }
         public override void Inspection()
         {
-            base.Inspection();
             string inspected = "You take a closer look in the room and you find a bush with red berries that look a little bit 'deathy' so you decide to leave them";
             Console.WriteLine(inspected);
         }
