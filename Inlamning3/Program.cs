@@ -6,6 +6,7 @@ namespace Inlamning3.Classes
     {
         static void Main(string[] args)
         {
+            Errors error = new Errors();
             bool exit = false;
             Actions action = new Actions();
             Story story = new Story();
@@ -21,12 +22,12 @@ namespace Inlamning3.Classes
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("*Oops, your input is invalid*");
+                    error.NotValidInput();
                 }
                 int convertInput = LoopOptions(input);
                 switch (convertInput)
                 {
-                    case -1: Console.WriteLine("*Oops, not a valid command");
+                    case -1: error.NotValidInput();
                         break;
                     case 1:
                         action.MoveNorth();
