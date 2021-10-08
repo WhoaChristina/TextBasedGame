@@ -9,14 +9,13 @@ namespace Inlamning3.Classes
         public string Name { get; set; }
         public bool CanCombine { get; set; }
 
-        public virtual bool Combindable(Items input)
+        public virtual bool Combindable(Items input) //metod för att kolla itemet kan combineras med
         {
             return false;
         }
-        public virtual Items GenerateCombinedItem()
+        public virtual Items GenerateCombinedItem() //retunerar det "nya" itemet, alltså det man får av att kombinera itemsen
         {
             return null;
         }
-
     }
 }

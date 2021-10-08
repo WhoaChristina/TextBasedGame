@@ -13,11 +13,10 @@ namespace Inlamning3.Classes
             ItemsInRoom.Add(new HatPiece1());
             PathFinding.Add(Direction.South, 0);
         }
-        public override void Inspection()
+        public override void Inspection() //exempel på hur den kan overridas
         {
             string inspected = "You take a closer look in the room and you find a bush with red berries that look a little bit 'deathy' so you decide to leave them";
             Console.WriteLine(inspected);
         }
-
     }
 }

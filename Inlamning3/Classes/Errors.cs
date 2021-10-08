@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Inlamning3.Classes
 {
-    public class Errors
+    public class Errors //ganska självföklarande klass
     {
         public void NotValidMove()
         {

@@ -7,10 +7,9 @@ namespace Inlamning3.Classes
     public abstract class Room
     {
         public int Paths { get; set; }
-        private Dictionary<Direction, int> pathFinding = new Dictionary<Direction, int>();
+        private Dictionary<Direction, int> pathFinding = new Dictionary<Direction, int>(); //för att hålla kolla på vilket rum man är i
         private List<Items> itemsInRoom = new List<Items>();
         private List<Guards> guardsInRoom = new List<Guards>();
-
         public List<Items> ItemsInRoom
         {
             get { return itemsInRoom; }
@@ -26,27 +25,16 @@ namespace Inlamning3.Classes
             get { return guardsInRoom; }
             set { guardsInRoom = value; }
         }
-        public void PrintPaths()
-        {
-            foreach (var path in pathFinding.Keys)
-            {
-                Console.WriteLine(path);
-            }
-        }
-        public List<Items> ItemsToPickUp()
+        public List<Items> ItemsToPickUp() 
         {
             return itemsInRoom;
         }
-        public void ItemsDropped()
-        {
-            //lägg till i itemsInRoom
-        }
-        public virtual void Inspection ()
+        public virtual void Inspection () //defult inspection, denna kan overridas med andra saker i ärvande klasser
         {
             string inspection = "There is nothing to inspect";
             Console.WriteLine(inspection);
         }
-        public enum Direction
+        public enum Direction 
         {
             North = 1,
             South = 2,

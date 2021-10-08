@@ -11,8 +11,8 @@ namespace Inlamning3.Classes
             Actions action = new Actions();
             Story story = new Story();
             story.Start();
-            PrintOptions();
-            while (exit != true && Actions.gameDone != true)
+            PrintOptions(); //skriver ut options en gång i början, upplevde att det var svårt att se "spelet" annars
+            while (exit != true && Actions.gameDone != true) 
             {
                 string input ="";
                 Console.WriteLine("What would you like to do? You can at any time write help for a full commando list: ");
@@ -24,7 +24,7 @@ namespace Inlamning3.Classes
                 {
                     error.NotValidInput();
                 }
-                int convertInput = LoopOptions(input);
+                int convertInput = LoopOptions(input); //jag hade redan börjat göra spelet och tänkte att det skulle vara siffer styrt, såg sent att det inte skulle vara det
                 switch (convertInput)
                 {
                     case -1: error.NotValidInput();
@@ -68,10 +68,8 @@ namespace Inlamning3.Classes
                     case 13:
                         exit = true;
                         break;
-
                 }
-            }
-            
+            }  
         }
         public static int LoopOptions(string input)
         {
@@ -107,7 +105,7 @@ namespace Inlamning3.Classes
             }
             return -1;
         }
-        public static void PrintOptions()
+        public static void PrintOptions() 
         {
             Console.WriteLine("move north");
             Console.WriteLine("move south");

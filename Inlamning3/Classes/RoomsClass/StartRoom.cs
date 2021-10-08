@@ -12,9 +12,7 @@ namespace Inlamning3.Classes
             ItemsInRoom.Add(new Carrot());
             ItemsInRoom.Add(new Apple());
             PathFinding.Add(Direction.North, 1);
-            PathFinding.Add(Direction.East, 2); // N/S/E/W, path
-            
+            PathFinding.Add(Direction.East, 2); 
         }
-
     }
 }

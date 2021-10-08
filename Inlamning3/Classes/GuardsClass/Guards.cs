@@ -8,6 +8,6 @@ namespace Inlamning3.Classes
     {
         public string Name { get; set; }
         public bool Guarding { get; set; }
-        public abstract bool ValidGift(Items input);
+        public abstract bool ValidGift(Items input); //metod för att se om guarden fått rätt gift (Alltså "dörren" fått rätt "nyckel"
     }
 }

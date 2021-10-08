@@ -7,7 +7,7 @@ namespace Inlamning3.Classes
 { 
     public class EndRoom: Room
     {
-        string endFileOnePiece = @"c:\\temp\\EndStory1Piece.txt";
+        string endFileOnePiece = @"c:\\temp\\EndStory1Piece.txt"; 
         string endFileAssembled = @"c:\\temp\\EndStoryAssembled.txt";
         string endFileNotAssembled = @"c:\\temp\\EndStoryNotAssembled.txt";
         public EndRoom()
@@ -15,7 +15,7 @@ namespace Inlamning3.Classes
             Paths = 1;
             PathFinding.Add(Direction.South, 2);
         }
-        public override void EndRoomStory(List<Items> inventory)
+        public override void EndRoomStory(List<Items> inventory) //beroende på vad som finns i din inventory så kommer spelet att avslutas (eller inte) med olika storys
         {
             bool foundPiece1 = false;
             bool foundPiece2 = false;
@@ -84,10 +84,8 @@ namespace Inlamning3.Classes
             }
             else if (foundHat != true)
             {
-                Console.WriteLine("maybe you should look a little bit harder");
+                Console.WriteLine("maybe you should look a little bit harder and then come back here");
             }
-
         }
-
     }
 }

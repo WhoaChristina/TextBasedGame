@@ -11,7 +11,7 @@ namespace Inlamning3.Classes
             Name = "oink";
             Guarding = true;
         }
-        public override bool ValidGift(Items input)
+        public override bool ValidGift(Items input) 
         {
             if (input is Apple)
             {
