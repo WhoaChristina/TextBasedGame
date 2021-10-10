@@ -31,7 +31,7 @@ namespace Inlamning3.Classes
         }
         public virtual void Inspection () //defult inspection, denna kan overridas med andra saker i ärvande klasser
         {
-            string inspection = "There is nothing to inspect";
+            string inspection = "*There is nothing to inspect*";
             Console.WriteLine(inspection);
         }
         public enum Direction 

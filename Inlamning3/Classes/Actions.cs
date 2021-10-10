@@ -135,12 +135,19 @@ namespace Inlamning3.Classes
         }
         public void PickUpItemsInRoom()
         {
-            List<Items> temp = rooms[currentRoom].ItemsToPickUp();
-            foreach (var item in temp)
+            if (rooms[currentRoom].ItemsInRoom.Count > 0)
             {
-                player.inventory.Add(item);
+                List<Items> temp = rooms[currentRoom].ItemsToPickUp();
+                foreach (var item in temp)
+                {
+                    player.inventory.Add(item);
+                }
+                rooms[currentRoom].ItemsInRoom.Clear();
             }
-            rooms[currentRoom].ItemsInRoom.Clear();
+            else
+            {
+                Console.WriteLine("*Oops, no items to pick up in this room*");
+            }
         }
         public void DropItem()
         {
